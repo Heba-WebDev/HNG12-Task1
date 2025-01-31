@@ -11,9 +11,9 @@ public class MyInfoController : ControllerBase
     {
         var response = new
         {
-            email = "your-email@example.com",
+            email = "omarzaynab48@gmail.com",
             current_datetime = DateTime.UtcNow.ToString("o"),
-            github_url = "https://github.com/yourusername/your-repo"
+            github_url = "https://github.com/Heba-WebDev/HNG12-Task1"
         };
 
         return Ok(response);
