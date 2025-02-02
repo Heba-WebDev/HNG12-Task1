@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace task1.Controllers;
 
 [ApiController]
-[Route("")]
+[Route("/num")]
 public class MyInfoController : ControllerBase
 {
     [HttpGet]
@@ -11,7 +11,7 @@ public class MyInfoController : ControllerBase
     {
         var response = new
         {
-            email = "omarzaynab48@gmail.com",
+            email = "x@gmail.com",
             current_datetime = DateTime.UtcNow.ToString("o"),
             github_url = "https://github.com/Heba-WebDev/HNG12-Task1"
         };
