@@ -2,13 +2,7 @@
 
 ## Description
 
-This is a simple public API developed as part of the HNG12 Stage 0 Backend task. The API returns basic information in JSON format, including:
-
-- The registered email address used for HNG12 Slack workspace.
-
-- The current datetime as an ISO 8601 formatted timestamp.
-
-- The GitHub repository URL of this project.
+An API that takes a number and returns interesting mathematical properties about it, along with a fun fact.
 
 ## Technology Stack
 
@@ -16,14 +10,17 @@ ASP.NET Core
 
 ## API Documentation
 
-### Endpoint GET /
+### Endpoint GET /api/classify-number?number=371
 - Sample Response (200 OK)
 
 ```
 {
-  "email": "my_email@gmail.com",
-  "current_datetime": "2025-01-31T09:30:00Z",
-  "github_url": "https://github.com/heba-webdev/HNG12-Task1"
+  "number": 371,
+  "is_prime": false,
+  "is_perfect": false,
+  "properties": ["armstrong", "odd"],
+  "digit_sum": 11,  // sum of its digits
+  "fun_fact": "371 is an Armstrong number because 3^3 + 7^3 + 1^3 = 371"
 }
 ```
 
