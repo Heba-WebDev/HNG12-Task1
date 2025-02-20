@@ -1,0 +1,30 @@
+{
+    "data": {
+      "date": {
+        "created_at": "2025-02-20",
+        "updated_at": "2025-02-20"
+      },
+      "descriptions": {
+        "app_description": "An ASP .NET Core health monitor",
+        "app_logo": "https://i.ibb.co/XxBp07bn/5g.png",
+        "app_name": "ASP .NET Core Monitor",
+        "app_url": "https://www.heba-dev.tech",
+        "background_color": "#ffffff"
+      },
+      "integration_category": "Monitoring & Logging",
+      "integration_type": "interval",
+      "is_active": false,
+      "output": [
+        {
+          "label": "output_channel_1",
+          "value": true
+        }
+      ],
+      "key_features": [
+        "Checks the health of an ASP .NET Core app every 5 minutes"
+      ],
+      "settings": [{"label": "interval", "type": "text", "required": true, "default": "*/10 * * * *"}],
+      "tick_url": "https://www.heba-dev.tech/tick",
+      "target_url": ""
+    }
+  }
