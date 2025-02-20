@@ -1,23 +1,34 @@
 using Microsoft.Extensions.Diagnostics.HealthChecks;
-namespace task1;
+using System.Diagnostics;
 
-public class BasicHealthCheck : IHealthCheck
+public class SystemHealthCheck : IHealthCheck
 {
-    public Task<HealthCheckResult> CheckHealthAsync(
-        HealthCheckContext context, CancellationToken cancellationToken = default)
+    public Task<HealthCheckResult> CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken = default)
     {
-        var isHealthy = true;
+        var process = Process.GetCurrentProcess();
 
-        // ...
+        // Get CPU usage
+        var cpuUsage = process.TotalProcessorTime.TotalSeconds;
+
+        // Get RAM usage
+        var ramUsage = process.WorkingSet64 / 1024 / 1024; // Convert to MB
+
+        // Check if the system is healthy
+        var isHealthy = ramUsage < 1024; // Example: Consider system healthy if RAM usage is less than 1GB
+
+        var data = new Dictionary<string, object>
+        {
+            { "cpu_usage_seconds", cpuUsage },
+            { "ram_usage_mb", ramUsage }
+        };
 
         if (isHealthy)
         {
-            return Task.FromResult(
-                HealthCheckResult.Healthy("A healthy result."));
+            return Task.FromResult(HealthCheckResult.Healthy("System is healthy", data));
         }
-
-        return Task.FromResult(
-            new HealthCheckResult(
-                context.Registration.FailureStatus, "An unhealthy result."));
+        else
+        {
+            return Task.FromResult(HealthCheckResult.Unhealthy("System is under heavy load", null, data));
+        }
     }
 }
